@@ -1,6 +1,7 @@
 package org.example.restclientpractice;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestClient;
@@ -8,7 +9,7 @@ import org.springframework.web.client.RestClient;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/characters/")
+@RequestMapping("/api/characters")
 public class CharacterController {
 
     RestClient.Builder builder = RestClient.builder();
@@ -19,7 +20,10 @@ public class CharacterController {
         return characterAPIService.getAllCharacters();
     }
 
-    // todo: implement get mapping that gets one character via id
-    // todo: tbd
+    @GetMapping("/{id}")
+    CharacterAPIResponseResults getCharacterById(@PathVariable int id){
+        return characterAPIService.getCharacterById(id);
+    }
+
 
 }

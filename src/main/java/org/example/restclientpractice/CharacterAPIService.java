@@ -18,4 +18,8 @@ public class CharacterAPIService {
         assert response != null;
         return response.results();
     }
+
+    public CharacterAPIResponseResults getCharacterById(int id){
+        return this.restClient.get().uri("/character/" + id).retrieve().body(CharacterAPIResponseResults.class);
+    }
 }

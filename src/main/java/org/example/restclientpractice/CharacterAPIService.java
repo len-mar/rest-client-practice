@@ -27,4 +27,13 @@ public class CharacterAPIService {
         CharacterAPIResponse response = this.restClient.get().uri("/character/?status=alive").retrieve().body(CharacterAPIResponse.class);
         return response.results();
     }
+
+    // todo: Write an endpoint for species statistics
+    //  When you enter GET http://localhost:8080/api/species-statistic?species=Human in Postman,
+    // the number of living "Human" characters should be outputted as a number (not JSON). The same should work for all other species.
+
+    public CharacterAPIInfo getCharactersBySpecies(String species){
+        CharacterAPIResponse response = this.restClient.get().uri("/character?species=" + species).retrieve().body(CharacterAPIResponse.class);
+        return response.info();
+    }
 }

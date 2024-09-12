@@ -14,9 +14,11 @@ public class CharacterController {
     RestClient.Builder builder = RestClient.builder();
     private final CharacterAPIService characterAPIService = new CharacterAPIService(builder);
 
-    // todo: implement get mapping that outputs json with those three attributes
     @GetMapping
     List<CharacterAPIResponseResults> getAllCharacters(){
         return characterAPIService.getAllCharacters();
     }
+
+    // todo: implement get mapping that gets one character via id
+
 }

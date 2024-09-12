@@ -20,5 +20,6 @@ public class CharacterController {
     }
 
     // todo: implement get mapping that gets one character via id
+    // todo: tbd
 
 }

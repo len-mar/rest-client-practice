@@ -22,4 +22,9 @@ public class CharacterAPIService {
     public CharacterAPIResponseResults getCharacterById(int id){
         return this.restClient.get().uri("/character/" + id).retrieve().body(CharacterAPIResponseResults.class);
     }
+
+    public List<CharacterAPIResponseResults> getAliveCharacters(){
+        CharacterAPIResponse response = this.restClient.get().uri("/character/?status=alive").retrieve().body(CharacterAPIResponse.class);
+        return response.results();
+    }
 }

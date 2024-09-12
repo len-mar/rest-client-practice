@@ -1,9 +1,6 @@
 package org.example.restclientpractice;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestClient;
 
 import java.util.List;
@@ -24,6 +21,13 @@ public class CharacterController {
     CharacterAPIResponseResults getCharacterById(@PathVariable int id){
         return characterAPIService.getCharacterById(id);
     }
+
+    @GetMapping("?status=alive")
+    List<CharacterAPIResponseResults> getAliveCharacters(){
+        return characterAPIService.getAliveCharacters();
+    }
+
+
 
 
 }

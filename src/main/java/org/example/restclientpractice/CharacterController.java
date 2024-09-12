@@ -29,8 +29,7 @@ public class CharacterController {
 
     @GetMapping("/species-statistic")
     public int getCharacterCountBySpecies(@RequestParam String species){
-        return characterAPIService.getCharactersBySpecies(species).count();
+        return characterAPIService.getInfoObjectBySpecies(species).count();
     }
-
 
 }

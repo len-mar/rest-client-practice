@@ -13,6 +13,8 @@ public class CharacterAPIService {
         this.restClient = builder.baseUrl("https://rickandmortyapi.com/api").build();
     }
 
+    // todo: write unit test for this
+    // todo: needs configuration of mockserver
     public List<CharacterAPIResponseResults> getAllCharacters() {
         CharacterAPIResponse response = this.restClient.get().uri("/character").retrieve().body(CharacterAPIResponse.class);
         assert response != null;
@@ -24,7 +26,7 @@ public class CharacterAPIService {
     }
 
     public List<CharacterAPIResponseResults> getAliveCharacters(){
-        CharacterAPIResponse response = this.restClient.get().uri("/character/?status=alive").retrieve().body(CharacterAPIResponse.class);
+        CharacterAPIResponse response = this.restClient.get().uri("/character?status=alive").retrieve().body(CharacterAPIResponse.class);
         return response.results();
     }
 

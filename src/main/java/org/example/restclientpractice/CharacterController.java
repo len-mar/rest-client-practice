@@ -1,16 +1,24 @@
 package org.example.restclientpractice;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestClient;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@RequiredArgsConstructor
 public class CharacterController {
 
-    RestClient.Builder builder = RestClient.builder();
-    private final CharacterAPIService characterAPIService = new CharacterAPIService(builder);
+    // todo: why?
+    private final CharacterAPIService characterAPIService;
+//
+//    public CharacterController(CharacterAPIService characterAPIService){
+//        this.characterAPIService = characterAPIService;
+//    }
+
+    //    RestClient.Builder builder = RestClient.builder();
+    //    private final CharacterAPIService characterAPIService = new CharacterAPIService(builder);
 
     @GetMapping("/characters")
     List<CharacterAPIResponseResults> getAllCharacters(){
@@ -22,12 +30,12 @@ public class CharacterController {
         return characterAPIService.getCharacterById(id);
     }
 
-    @GetMapping("/characters?status=alive")
+    @GetMapping("/characters/alive")
     List<CharacterAPIResponseResults> getAliveCharacters(){
         return characterAPIService.getAliveCharacters();
     }
 
-    @GetMapping("/species-statistic")
+    @GetMapping("/characters/species-statistic")
     public int getCharacterCountBySpecies(@RequestParam String species){
         return characterAPIService.getInfoObjectBySpecies(species).count();
     }
